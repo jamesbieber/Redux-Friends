@@ -5,9 +5,9 @@ const PrivateRoute = ({ component: Component, ...therest }) => {
   return (
     <Route
       {...therest}
-      render={() => {
+      render={props => {
         if (localStorage.getItem("token")) {
-          return <Component />;
+          return <Component {...props} />;
         } else {
           console.log("Not logged in, redirecting...");
           return <Redirect to="/login" />;
